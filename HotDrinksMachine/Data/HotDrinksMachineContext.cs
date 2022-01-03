@@ -13,15 +13,15 @@ namespace HotDrinksMachine.Data
 
         public DbSet<HotDrinksMachine.Models.Drink> Drinks { get; set; }
 
-        public DbSet<HotDrinksMachine.Models.Ingredient> Ingredients { get; set; }
+        public DbSet<HotDrinksMachine.Models.Method> Methods { get; set; }
 
-        public DbSet<HotDrinksMachine.Models.DrinkIngredient> DrinkIngredients { get; set; }
+        public DbSet<HotDrinksMachine.Models.DrinkMethod> DrinkMethods { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Drink>().ToTable("Drink");
-            modelBuilder.Entity<Ingredient>().ToTable("Ingredient");
-            modelBuilder.Entity<DrinkIngredient>().ToTable("DrinkIngredient");
+            modelBuilder.Entity<Method>().ToTable("Methods");
+            modelBuilder.Entity<DrinkMethod>().ToTable("DrinkMethods");
         }
     }
 }

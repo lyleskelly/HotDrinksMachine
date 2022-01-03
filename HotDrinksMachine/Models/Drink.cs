@@ -10,6 +10,6 @@ namespace HotDrinksMachine.Models
 
         public Size Size { get; set; }
 
-        public List<DrinkIngredient> DrinkIngredients { get; set; }
+        public List<DrinkMethod> DrinkMethods { get; set; }
     }
 }

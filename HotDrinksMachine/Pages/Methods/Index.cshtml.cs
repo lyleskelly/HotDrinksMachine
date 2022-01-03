@@ -3,7 +3,7 @@ using HotDrinksMachine.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace HotDrinksMachine.Pages.DrinkIngredients
+namespace HotDrinksMachine.Pages.Methods
 {
     public class IndexModel : PageModel
     {
@@ -14,12 +14,11 @@ namespace HotDrinksMachine.Pages.DrinkIngredients
             _context = context;
         }
 
-        public IList<DrinkIngredient> DrinkIngredients { get; set; }
+        public IList<Method> Method { get; set; }
 
         public async Task OnGetAsync()
         {
-            DrinkIngredients = await _context.DrinkIngredients
-                .Include(d => d.Ingredient).ToListAsync();
+            Method = await _context.Methods.ToListAsync();
         }
     }
 }

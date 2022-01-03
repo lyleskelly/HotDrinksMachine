@@ -7,7 +7,7 @@ namespace HotDrinksMachine.Data
         public static void Initialize(HotDrinksMachineContext context)
         {
             //find drinks
-            if (context.Drinks.Any() || context.Ingredients.Any() || context.DrinkIngredients.Any())
+            if (context.Drinks.Any() || context.Methods.Any() || context.DrinkMethods.Any())
             {
                 return;
             }
@@ -21,34 +21,38 @@ namespace HotDrinksMachine.Data
             context.Drinks.AddRange(drinks);
             context.SaveChanges();
 
-            var ingredients = new Ingredient[]
+            var methods = new Method[]
                {
-                    new Ingredient{Name="Water"},
-                    new Ingredient{Name="Tea"},
-                    new Ingredient{Name="Lemon"},
-                    new Ingredient{Name="Coffee"},
-                    new Ingredient{Name="Sugar"},
-                    new Ingredient{Name="Milk"},
-                    new Ingredient{Name="Drinking chocolate"}
+                    new Method{Name="Boil some water"}, //1
+                    new Method{Name="Steep the water in the tea"},  //2
+                    new Method{Name="Pour in the cup"}, //3
+                    new Method{Name="Add lemon"},   //4
+                    new Method{Name="Brew the coffee grounds"}, //5
+                    new Method{Name="Add Sugar"},   //6
+                    new Method{Name="Add Milk"},    //7
+                    new Method{Name="Add drinking chocolate powder to the water"}   //8
                };
-            context.Ingredients.AddRange(ingredients);
+            context.Methods.AddRange(methods);
             context.SaveChanges();
 
-            var drinkIngredients = new DrinkIngredient[]
+            var drinkMethods = new DrinkMethod[]
                 {
-                    new DrinkIngredient{DrinkId=1, IngredientId=1},
-                    new DrinkIngredient{DrinkId=1, IngredientId=2},
-                    new DrinkIngredient{DrinkId=1, IngredientId=3},
+                    new DrinkMethod{DrinkId=1, MethodId=1, Step=1},
+                    new DrinkMethod{DrinkId=1, MethodId=2, Step=2},
+                    new DrinkMethod{DrinkId=1, MethodId=3, Step=3},
+                    new DrinkMethod{DrinkId=1, MethodId=4, Step=4},
 
-                    new DrinkIngredient{DrinkId=2, IngredientId=1},
-                    new DrinkIngredient{DrinkId=2, IngredientId=4},
-                    new DrinkIngredient{DrinkId=2, IngredientId=5},
-                    new DrinkIngredient{DrinkId=2, IngredientId=6},
+                    new DrinkMethod{DrinkId=2, MethodId=1, Step=1},
+                    new DrinkMethod{DrinkId=2, MethodId=5, Step=2},
+                    new DrinkMethod{DrinkId=2, MethodId=3, Step=3},
+                    new DrinkMethod{DrinkId=2, MethodId=6, Step=4},
+                    new DrinkMethod{DrinkId=2, MethodId=7, Step=5},
 
-                    new DrinkIngredient{DrinkId=3, IngredientId=1},
-                    new DrinkIngredient{DrinkId=3, IngredientId=7},
+                    new DrinkMethod{DrinkId=3, MethodId=1, Step=1},
+                    new DrinkMethod{DrinkId=3, MethodId=8, Step=2},
+                    new DrinkMethod{DrinkId=3, MethodId=3, Step=3}
                 };
-            context.DrinkIngredients.AddRange(drinkIngredients);
+            context.DrinkMethods.AddRange(drinkMethods);
             context.SaveChanges();
         }
     }

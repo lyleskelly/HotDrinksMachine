@@ -1,5 +1,5 @@
 ﻿@page
-@model HotDrinksMachine.Pages.Ingredients.CreateModel
+@model HotDrinksMachine.Pages.DrinkMethods.CreateModel
 
 @{
     ViewData["Title"] = "Create";
@@ -8,16 +8,19 @@
 
 <h1>Create</h1>
 
-<h4>Ingredient</h4>
+<h4>DrinkMethods</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Ingredient.Name" class="control-label"></label>
-                <input asp-for="Ingredient.Name" class="form-control" />
-                <span asp-validation-for="Ingredient.Name" class="text-danger"></span>
+                <label asp-for="DrinkMethods.DrinkId" class="control-label"></label>
+                <select asp-for="DrinkMethods.DrinkId" class ="form-control" asp-items="ViewBag.DrinkId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DrinkMethods.MethodId" class="control-label"></label>
+                <select asp-for="DrinkMethods.MethodId" class ="form-control" asp-items="ViewBag.MethodId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

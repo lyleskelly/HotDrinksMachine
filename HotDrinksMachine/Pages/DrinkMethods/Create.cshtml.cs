@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace HotDrinksMachine.Pages.DrinkIngredients
+namespace HotDrinksMachine.Pages.DrinkMethods
 {
     public class CreateModel : PageModel
     {
@@ -17,12 +17,12 @@ namespace HotDrinksMachine.Pages.DrinkIngredients
 
         public IActionResult OnGet()
         {
-            ViewData["IngredientId"] = new SelectList(_context.Ingredients, "Id", "Id");
+            ViewData["MethodId"] = new SelectList(_context.Methods, "Id", "Id");
             return Page();
         }
 
         [BindProperty]
-        public DrinkIngredient DrinkIngredients { get; set; }
+        public DrinkMethod DrinkMethods { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -32,7 +32,7 @@ namespace HotDrinksMachine.Pages.DrinkIngredients
                 return Page();
             }
 
-            _context.DrinkIngredients.Add(DrinkIngredients);
+            _context.DrinkMethods.Add(DrinkMethods);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

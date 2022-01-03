@@ -2,10 +2,9 @@
 using HotDrinksMachine.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
-namespace HotDrinksMachine.Pages.DrinkIngredients
+namespace HotDrinksMachine.Pages.Methods
 {
     public class EditModel : PageModel
     {
@@ -17,7 +16,7 @@ namespace HotDrinksMachine.Pages.DrinkIngredients
         }
 
         [BindProperty]
-        public DrinkIngredient DrinkIngredients { get; set; }
+        public Method Method { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -26,14 +25,12 @@ namespace HotDrinksMachine.Pages.DrinkIngredients
                 return NotFound();
             }
 
-            DrinkIngredients = await _context.DrinkIngredients
-                .Include(d => d.Ingredient).FirstOrDefaultAsync(m => m.Id == id);
+            Method = await _context.Methods.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (DrinkIngredients == null)
+            if (Method == null)
             {
                 return NotFound();
             }
-            ViewData["IngredientId"] = new SelectList(_context.Ingredients, "Id", "Id");
             return Page();
         }
 
@@ -46,7 +43,7 @@ namespace HotDrinksMachine.Pages.DrinkIngredients
                 return Page();
             }
 
-            _context.Attach(DrinkIngredients).State = EntityState.Modified;
+            _context.Attach(Method).State = EntityState.Modified;
 
             try
             {
@@ -54,7 +51,7 @@ namespace HotDrinksMachine.Pages.DrinkIngredients
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!DrinkIngredientsExists(DrinkIngredients.Id))
+                if (!MethodExists(Method.Id))
                 {
                     return NotFound();
                 }
@@ -67,9 +64,9 @@ namespace HotDrinksMachine.Pages.DrinkIngredients
             return RedirectToPage("./Index");
         }
 
-        private bool DrinkIngredientsExists(int id)
+        private bool MethodExists(int id)
         {
-            return _context.DrinkIngredients.Any(e => e.Id == id);
+            return _context.Methods.Any(e => e.Id == id);
         }
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace HotDrinksMachine.Pages.Ingredients
+namespace HotDrinksMachine.Pages.DrinkMethods
 {
     public class DetailsModel : PageModel
     {
@@ -15,7 +15,7 @@ namespace HotDrinksMachine.Pages.Ingredients
             _context = context;
         }
 
-        public Ingredient Ingredient { get; set; }
+        public DrinkMethod DrinkMethods { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -24,9 +24,10 @@ namespace HotDrinksMachine.Pages.Ingredients
                 return NotFound();
             }
 
-            Ingredient = await _context.Ingredients.FirstOrDefaultAsync(m => m.Id == id);
+            DrinkMethods = await _context.DrinkMethods
+                .Include(d => d.Method).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Ingredient == null)
+            if (DrinkMethods == null)
             {
                 return NotFound();
             }

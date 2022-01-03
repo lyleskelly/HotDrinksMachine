@@ -5,6 +5,62 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to the Drinks Machine</h1>
+    <h1 class="display-4">Drinks Machine</h1>
+    <form method="post">
+    @if (Model.Drinks != null)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Drinks[0].Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Drinks[0].Description)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Drinks)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                <button type="submit" value="@item.Id" name="drinkId" class="btn btn-primary">Make Drink</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        }
+    </form>
+        @if (Model.DrinkMethods != null)
+        {
+            <br />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.DrinkMethods[0].Step)</th>
+                        <th>@Html.DisplayNameFor(model => model.DrinkMethods[0].Method.Name)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.DrinkMethods)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Step)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Method.Name)</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        }
 
 </div>

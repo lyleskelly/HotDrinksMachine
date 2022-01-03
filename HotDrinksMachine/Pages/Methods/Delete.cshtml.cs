@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace HotDrinksMachine.Pages.Ingredients
+namespace HotDrinksMachine.Pages.Methods
 {
     public class DeleteModel : PageModel
     {
@@ -16,7 +16,7 @@ namespace HotDrinksMachine.Pages.Ingredients
         }
 
         [BindProperty]
-        public Ingredient Ingredient { get; set; }
+        public Method Method { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -25,9 +25,9 @@ namespace HotDrinksMachine.Pages.Ingredients
                 return NotFound();
             }
 
-            Ingredient = await _context.Ingredients.FirstOrDefaultAsync(m => m.Id == id);
+            Method = await _context.Methods.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Ingredient == null)
+            if (Method == null)
             {
                 return NotFound();
             }
@@ -41,11 +41,11 @@ namespace HotDrinksMachine.Pages.Ingredients
                 return NotFound();
             }
 
-            Ingredient = await _context.Ingredients.FindAsync(id);
+            Method = await _context.Methods.FindAsync(id);
 
-            if (Ingredient != null)
+            if (Method != null)
             {
-                _context.Ingredients.Remove(Ingredient);
+                _context.Methods.Remove(Method);
                 await _context.SaveChangesAsync();
             }
 

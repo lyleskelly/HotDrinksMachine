@@ -3,7 +3,7 @@ using HotDrinksMachine.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace HotDrinksMachine.Pages.Ingredients
+namespace HotDrinksMachine.Pages.Methods
 {
     public class CreateModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace HotDrinksMachine.Pages.Ingredients
         }
 
         [BindProperty]
-        public Ingredient Ingredient { get; set; }
+        public Method Method { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -30,7 +30,7 @@ namespace HotDrinksMachine.Pages.Ingredients
                 return Page();
             }
 
-            _context.Ingredients.Add(Ingredient);
+            _context.Methods.Add(Method);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

@@ -1,5 +1,5 @@
 ﻿@page
-@model HotDrinksMachine.Pages.Ingredients.EditModel
+@model HotDrinksMachine.Pages.Methods.EditModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -8,17 +8,17 @@
 
 <h1>Edit</h1>
 
-<h4>Ingredient</h4>
+<h4>Method</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Ingredient.Id" />
+            <input type="hidden" asp-for="Method.Id" />
             <div class="form-group">
-                <label asp-for="Ingredient.Name" class="control-label"></label>
-                <input asp-for="Ingredient.Name" class="form-control" />
-                <span asp-validation-for="Ingredient.Name" class="text-danger"></span>
+                <label asp-for="Method.Name" class="control-label"></label>
+                <input asp-for="Method.Name" class="form-control" />
+                <span asp-validation-for="Method.Name" class="text-danger"></span>
             </div>
         </form>
     </div>

@@ -1,5 +1,5 @@
 ﻿@page
-@model HotDrinksMachine.Pages.DrinkIngredients.IndexModel
+@model HotDrinksMachine.Pages.DrinkMethods.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -15,16 +15,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DrinkIngredients[0].Ingredient)
+                @Html.DisplayNameFor(model => model.DrinkMethods[0].Method)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.DrinkIngredients) {
+@foreach (var item in Model.DrinkMethods) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Ingredient.Id)
+                @Html.DisplayFor(modelItem => item.Method.Id)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
